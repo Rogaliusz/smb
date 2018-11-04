@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\patry\.nuget\packages\xamarin.android.arch.lifecycle.runtime\1.0.3.1\proguard" t="Include">
+      <e p="proguard.txt" t="Include" />
+    </e>
+    <e p="C:\Users\patry\.nuget\packages\xamarin.android.support.animated.vector.drawable\27.0.2.1\proguard" t="Include">
+      <e p="proguard.txt" t="Include" />
+    </e>
+    <e p="C:\Users\patry\.nuget\packages\xamarin.android.support.core.ui\27.0.2.1\proguard" t="Include">
+      <e p="proguard.txt" t="Include" />
+    </e>
+    <e p="C:\Users\patry\.nuget\packages\xamarin.android.support.design\27.0.2.1\proguard" t="Include">
+      <e p="proguard.txt" t="Include" />
+    </e>
+    <e p="C:\Users\patry\.nuget\packages\xamarin.android.support.media.compat\27.0.2.1\proguard" t="Include">
+      <e p="proguard.txt" t="Include" />
+    </e>
+    <e p="C:\Users\patry\.nuget\packages\xamarin.android.support.transition\27.0.2.1\proguard" t="Include">
+      <e p="proguard.txt" t="Include" />
+    </e>
+    <e p="C:\Users\patry\.nuget\packages\xamarin.android.support.v7.recyclerview\27.0.2.1\proguard" t="Include">
+      <e p="proguard.txt" t="Include" />
+    </e>
+    <e p="C:\Users\patry\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\patry\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_smb.1674310273.00" t="ExcludeRecursive" />
+    <e p="D:\Codes\Study\pjatk\smb" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="projekt_2" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="MainActivity.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="projekt_2.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AndroidManifest.xml" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="drawable" t="Include">
+            <e p="Icon.png" t="Include" />
+          </e>
+          <e p="layout" t="Include">
+            <e p="Main.axml" t="Include" />
+          </e>
+          <e p="Resource.Designer.cs" t="Include" />
+          <e p="values" t="Include">
+            <e p="strings.xml" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="smb.sln" t="IncludeFlat" />
+      <e p="src\common" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="common.csproj" t="IncludeRecursive" />
+        <e p="Intents.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="common.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src\projekt_1" t="IncludeRecursive">
+        <e p="Activities" t="Include">
+          <e p="ActivityBase.cs" t="Include" />
+          <e p="MainActivity.cs" t="Include" />
+          <e p="Products" t="Include">
+            <e p="AddProductActivity.cs" t="Include" />
+            <e p="EditProductActivity.cs" t="Include" />
+            <e p="ProductAcitivityBase.cs" t="Include" />
+            <e p="ProductListActivity.cs" t="Include" />
+          </e>
+          <e p="SettingsActivity.cs" t="Include" />
+        </e>
+        <e p="Adapters" t="Include">
+          <e p="ColorsSpinnerAdapter.cs" t="Include" />
+          <e p="ProductListAdapter.cs" t="Include" />
+        </e>
+        <e p="Assets" t="Include">
+          <e p="AboutAssets.txt" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="IoC" t="Include">
+          <e p="MainContainer.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Limitations" t="Include">
+            <e p="String.cs" t="Include" />
+          </e>
+          <e p="Product.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="projekt_1.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AndroidManifest.xml" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="IRepository.cs" t="Include" />
+          <e p="Products" t="Include">
+            <e p="IProductRepository.cs" t="Include" />
+            <e p="ProductRepository.cs" t="Include" />
+          </e>
+          <e p="Settings" t="Include">
+            <e p="ISettingsRepository.cs" t="Include" />
+            <e p="SettingsRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Resources" t="Include">
+          <e p="AboutResources.txt" t="Include" />
+          <e p="layout" t="Include">
+            <e p="activity_main.axml" t="Include" />
+            <e p="content_main.axml" t="Include" />
+            <e p="product_activity.axml" t="Include" />
+            <e p="product_item_template.axml" t="Include" />
+            <e p="products_activity.axml" t="Include" />
+            <e p="settings_activity.axml" t="Include" />
+          </e>
+          <e p="menu" t="Include">
+            <e p="menu_main.xml" t="Include" />
+          </e>
+          <e p="mipmap-anydpi-v26" t="Include">
+            <e p="ic_launcher.xml" t="Include" />
+            <e p="ic_launcher_round.xml" t="Include" />
+          </e>
+          <e p="mipmap-hdpi" t="Include">
+            <e p="ic_launcher.png" t="Include" />
+            <e p="ic_launcher_foreground.png" t="Include" />
+            <e p="ic_launcher_round.png" t="Include" />
+          </e>
+          <e p="mipmap-mdpi" t="Include">
+            <e p="ic_launcher.png" t="Include" />
+            <e p="ic_launcher_foreground.png" t="Include" />
+            <e p="ic_launcher_round.png" t="Include" />
+          </e>
+          <e p="mipmap-xhdpi" t="Include">
+            <e p="ic_launcher.png" t="Include" />
+            <e p="ic_launcher_foreground.png" t="Include" />
+            <e p="ic_launcher_round.png" t="Include" />
+          </e>
+          <e p="mipmap-xxhdpi" t="Include">
+            <e p="ic_launcher.png" t="Include" />
+            <e p="ic_launcher_foreground.png" t="Include" />
+            <e p="ic_launcher_round.png" t="Include" />
+          </e>
+          <e p="mipmap-xxxhdpi" t="Include">
+            <e p="ic_launcher.png" t="Include" />
+            <e p="ic_launcher_foreground.png" t="Include" />
+            <e p="ic_launcher_round.png" t="Include" />
+          </e>
+          <e p="Resource.Designer.cs" t="Include" />
+          <e p="values" t="Include">
+            <e p="colors.xml" t="Include" />
+            <e p="dimens.xml" t="Include" />
+            <e p="ic_launcher_background.xml" t="Include" />
+            <e p="strings.xml" t="Include" />
+            <e p="styles.xml" t="Include" />
+          </e>
+        </e>
+        <e p="Services" t="Include">
+          <e p="IService.cs" t="Include" />
+          <e p="SqlLite" t="Include">
+            <e p="ISqlLiteService.cs" t="Include" />
+            <e p="SqlLiteService.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Settings" t="Include">
+          <e p="SqlLiteSettings.cs" t="Include" />
+        </e>
+      </e>
+    </e>
+  </component>
+</project>
