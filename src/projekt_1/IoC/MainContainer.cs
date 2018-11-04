@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Autofac;
+using common.Services;
 using projekt_1.Adapters;
 using projekt_1.Repositories;
 using projekt_1.Services;
@@ -36,6 +37,11 @@ namespace projekt_1.IoC
         {
             builder.RegisterAssemblyTypes(Assembly)
                 .Where(x => x.IsAssignableTo<IService>())
+                .AsImplementedInterfaces()
+                .SingleInstance();
+
+            builder.RegisterAssemblyTypes(typeof(ICommonService).Assembly)
+                .Where(x => x.IsAssignableTo<ICommonService>())
                 .AsImplementedInterfaces()
                 .SingleInstance();
 

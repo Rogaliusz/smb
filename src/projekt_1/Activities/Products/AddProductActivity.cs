@@ -15,9 +15,14 @@ namespace projekt_1.Activities.Products
     [Activity(Label="Add new product")]
     public class AddProductActivity : ProductAcitivityBase
     {
+ 
         protected override void DoneClick()
         {
-            _productRepository.Insert(GetModel());
+            var model = GetModel();
+
+            _productRepository.Insert(model);
+            _productService.ProductWasCreated(model);
+
             StartActivity(typeof(ProductListActivity));
         }
 

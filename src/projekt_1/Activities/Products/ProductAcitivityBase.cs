@@ -11,12 +11,15 @@ using Android.Views;
 using Android.Widget;
 using projekt_1.Models;
 using projekt_1.Repositories.Products;
+using projekt_1.Services.Products;
 
 namespace projekt_1.Activities.Products
 {
     public abstract class ProductAcitivityBase : ActivityBase
     {
         protected readonly IProductRepository _productRepository = GetInstance<IProductRepository>();
+
+        protected IProductService _productService;
 
         protected TextView _txtName;
         protected TextView _txtCount;
@@ -31,6 +34,8 @@ namespace projekt_1.Activities.Products
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.product_activity);
+
+            _productService = GetInstance<IProductService>(this);
 
             _txtName = FindViewById<TextView>(Resource.Id.txtName);
             _txtCount = FindViewById<TextView>(Resource.Id.txtCount);

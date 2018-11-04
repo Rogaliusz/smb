@@ -2,8 +2,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:columnCount="6"
-    android:rowCount="3" 
-    android:orientation="vertical" >
+    android:rowCount="3"
+    android:orientation="vertical" 
+	android:useDefaultMargins="true">
 
     <TextView
         android:layout_gravity="fill_horizontal"
@@ -43,7 +44,7 @@
 	<CheckBox
 		android:id="@+id/cbPurchased"
         android:layout_row="0"
-        android:layout_column="3"
+        android:layout_column="5"
 		android:layout_rowSpan="3"
 		android:layout_gravity="center"
         android:text="Purchased" />
@@ -51,15 +52,15 @@
 	<TextView
 		android:id="@+id/txtEdit"
         android:layout_row="0"
-        android:layout_column="4"
-		android:layout_rowSpan="3"
+        android:layout_column="3"
+		android:layout_rowSpan="3"	
 		android:layout_gravity="center"
         android:text="Edit" />
 
 	<TextView
 		android:id="@+id/txtDelete"
         android:layout_row="0"
-        android:layout_column="5"
+        android:layout_column="4"
 		android:layout_rowSpan="3"
 		android:layout_gravity="center"
         android:text="Delete" />
