@@ -8,6 +8,6 @@ namespace common.Services.Json
     {
         string Serialize<T>(T @object);
 
-        T Deerialize<T>(string serializedObject);
+        T Deserialize<T>(string serializedObject);
     }
 }

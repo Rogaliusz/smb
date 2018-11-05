@@ -73,3 +73,9 @@ fabric.properties
 # End of https://www.gitignore.io/api/rider
 /src/projekt_1/.vs
 /src/projekt_1/obj
+/packages
+/src/projekt_2/bin
+/src/projekt_2/obj
+/src/projekt_2/obj
+/src/common/obj
+/.vs
