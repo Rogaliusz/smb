@@ -42,7 +42,7 @@ namespace projekt_1.Repositories.Products
         }
 
         public Product GetProduct(int id)
-            => _sqlLiteService.SqlConnection.Get<Product>(id);
+            => _sqlLiteService.SqlConnection.Find<Product>(id);
 
         public IEnumerable<Product> GetProducts()
             => _sqlLiteService.SqlConnection.Table<Product>();

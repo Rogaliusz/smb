@@ -4,5 +4,5 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="product_created">Nowy produkt został dodany!</string>
-    <string name="product_created_template">Product {0} w cenie {1} oraz ilości {2} został dodany na liste! Kliknij aby go zedytować</string>
+    <string name="product_created_template">Product #{3} {0} w cenie {1} oraz ilości {2} został dodany na liste! Kliknij aby go zedytować</string>
 </resources>

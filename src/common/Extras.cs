@@ -8,6 +8,6 @@ namespace common
     {
         public const string PRODUCT = "product";
 
-        public const string ID = "ID";
+        public const string ID = "product_id";
     }
 }

@@ -90,7 +90,7 @@ namespace projekt_1.Adapters
             var id = _products[position].Id;
 
             var intent = new Intent(_context, typeof(EditProductActivity));
-            intent.PutExtra("ID", id.ToString());
+            intent.PutExtra(common.Extras.ID, id.ToString());
 
             _context.StartActivity(intent);
         }
