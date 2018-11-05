@@ -12,14 +12,17 @@ using Android.Widget;
 
 namespace projekt_1.Activities.Products
 {
-    [Activity(Label = "Edit product")]
+    [Activity(Label = "Edit product", Exported = true)]
+    [IntentFilter(new[] { common.Intents.GO_TO_PRODUCT_EDIT })]
     public class EditProductActivity : ProductAcitivityBase
     {
+        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            var id = Int32.Parse(Intent.GetStringExtra("ID"));
+            var id = Int32.Parse(Intent.GetStringExtra(common.Extras.ID));
             var model = _productRepository.GetProduct(id);
 
             _id = id;

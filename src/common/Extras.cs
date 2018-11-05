@@ -7,5 +7,7 @@ namespace common
     public static class Extras
     {
         public const string PRODUCT = "product";
+
+        public const string ID = "ID";
     }
 }
