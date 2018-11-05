@@ -8,5 +8,7 @@ namespace common.Permissions
     public static class ProductsGroupPermission
     {
         public const string Name = "smb.projects.products";
+
+        public const string Label = "Products for smb project";
     }
 }

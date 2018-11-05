@@ -5,7 +5,6 @@ using Android.Runtime;
 using Android.Widget;
 using projekt_2.AndroidServices;
 
-[assembly:UsesPermission(Name = common.Permissions.TriggerOnProductCreatedPermission.Name)]
 namespace projekt_2
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]

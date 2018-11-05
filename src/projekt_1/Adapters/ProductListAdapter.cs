@@ -47,7 +47,7 @@ namespace projekt_1.Adapters
                 holder = view.Tag as ProductListAdapterViewHolder;
 
             if (holder == null)    
-                CreateAndSetHolder(parent, out view, out holder);
+                CreateAndSetHolder(parent, out view, out holder, position);
            
             //fill in your items
             //holder.Title.Text = "new text here";
@@ -58,15 +58,11 @@ namespace projekt_1.Adapters
             holder.Count.Text = product.Count.ToString();
 
             holder.Purchased.Checked = product.Purchased;
-            SetPurchasedCheckboxclickedHandler(position, holder);
-
-            holder.Edit.Click += (s, e) => { GoToEditActivity(position); };
-            holder.Delete.Click += (s, e) => { DeleteProductFromList(position); };
 
             return view;
         }
 
-        private void CreateAndSetHolder(ViewGroup parent, out View view, out ProductListAdapterViewHolder holder)
+        private void CreateAndSetHolder(ViewGroup parent, out View view, out ProductListAdapterViewHolder holder, int position)
         {
             holder = new ProductListAdapterViewHolder();
             var inflater = _context.GetSystemService(Context.LayoutInflaterService).JavaCast<LayoutInflater>();
@@ -80,6 +76,11 @@ namespace projekt_1.Adapters
             holder.Edit = view.FindViewById<TextView>(Resource.Id.txtEdit);
             holder.Delete = view.FindViewById<TextView>(Resource.Id.txtDelete);
             holder.Purchased = view.FindViewById<CheckBox>(Resource.Id.cbPurchased);
+
+            SetPurchasedCheckboxclickedHandler(position, holder);
+
+            holder.Edit.Click += (s, e) => { GoToEditActivity(position); };
+            holder.Delete.Click += (s, e) => { DeleteProductFromList(position); };
 
             view.Tag = holder;
         }

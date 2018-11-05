@@ -12,6 +12,9 @@ using Android.Widget;
 using common.Permissions;
 using projekt_2.BroadcastRecievers;
 
+[assembly: Permission(Name = TriggerOnProductCreatedPermission.Name, PermissionGroup = ProductsGroupPermission.Name, Label = TriggerOnProductCreatedPermission.Label)]
+[assembly: UsesPermission(Name = TriggerOnProductCreatedPermission.Name)]
+
 namespace projekt_2.AndroidServices
 {
     [Service(Exported = true)]
@@ -29,7 +32,7 @@ namespace projekt_2.AndroidServices
 
             var intentFilter = new IntentFilter(common.Intents.PRODUCT_CREATED);
 
-            RegisterReceiver(_productCreatedBroadcastReciever, intentFilter);
+            RegisterReceiver(_productCreatedBroadcastReciever, intentFilter, TriggerOnProductCreatedPermission.Name, null);
         }
 
         [return: GeneratedEnum]

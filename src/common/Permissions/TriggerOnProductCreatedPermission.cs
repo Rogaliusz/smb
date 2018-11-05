@@ -8,5 +8,7 @@ namespace common.Permissions
     {
         public const string Name = "smb.projects.products.created";
 
+        public const string Label = "Trigger when product was created";
+
     }
 }

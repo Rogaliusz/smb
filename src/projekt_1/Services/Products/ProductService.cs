@@ -31,7 +31,7 @@ namespace projekt_1.Services.Products
             var serializedProduct = _jsonService.Serialize<Product>(product);
             intent.PutExtra(common.Extras.PRODUCT, serializedProduct);
 
-            _context.SendBroadcast(intent);
+            _context.SendBroadcast(intent, common.Permissions.TriggerOnProductCreatedPermission.Name);
         }
     }
 }

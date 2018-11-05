@@ -10,7 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Autofac;
+using common.Permissions;
 using projekt_1.IoC;
+
+[assembly: Permission(Name = TriggerOnProductCreatedPermission.Name, PermissionGroup = ProductsGroupPermission.Name, Label = TriggerOnProductCreatedPermission.Label)]
+[assembly: UsesPermission(Name = TriggerOnProductCreatedPermission.Name)]
 
 namespace projekt_1.Activities
 {
