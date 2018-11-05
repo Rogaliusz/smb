@@ -28,7 +28,7 @@ namespace projekt_2.AndroidServices
             base.OnCreate();
 
             _handler = new Handler();
-            _productCreatedBroadcastReciever = new ProductCreatedBroadcastReciever();
+            _productCreatedBroadcastReciever = IoC.Container.GetInstance<ProductCreatedBroadcastReciever>();
 
             var intentFilter = new IntentFilter(common.Intents.PRODUCT_CREATED);
 

@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using common.Services.Json;
+using projekt_2.BroadcastRecievers;
+using projekt_2.Services.Notification;
 using TinyIoC;
 
 namespace projekt_2.IoC
@@ -24,8 +26,13 @@ namespace projekt_2.IoC
             _container = TinyIoC.TinyIoCContainer.Current;
 
             _container.Register<IJsonService, JsonService>().AsSingleton();
+            _container.Register<INotificationService, NotificationService>().AsMultiInstance();
 
+            _container.Register<ProductCreatedBroadcastReciever>();
         }
+
+        public static void RegisterContext(Context context)
+            => _container.Register(context);
 
         public static T GetInstance<T>() where T : class
             => _container.Resolve<T>();

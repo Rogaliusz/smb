@@ -15,5 +15,12 @@ namespace projekt_2.AndroidServices
 {
     public abstract class BaseAndroidService : Service
     {
+
+        public override void OnCreate()
+        {
+            base.OnCreate();
+
+            IoC.Container.RegisterContext(this);
+        }
     }
 }

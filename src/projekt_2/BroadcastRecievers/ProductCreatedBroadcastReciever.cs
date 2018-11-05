@@ -14,20 +14,22 @@ using Android.Widget;
 using common.Models;
 using common.Permissions;
 using common.Services.Json;
+using projekt_2.Services.Notification;
 
 namespace projekt_2.BroadcastRecievers
 {
     public class ProductCreatedBroadcastReciever : BaseBroadcastReciever
     {
-        private static int _notificationId = 0;
         private static string _channelName = "channel1";
         private static string _channelId = "666";
 
         private readonly IJsonService _jsonService;
+        private readonly INotificationService _notificationService;
 
-        public ProductCreatedBroadcastReciever()
+        public ProductCreatedBroadcastReciever(IJsonService jsonService, INotificationService notificationService)
         {
-            _jsonService = IoC.Container.GetInstance<IJsonService>();
+            _jsonService = jsonService;
+            _notificationService = notificationService;
         }
 
         public override void OnReceive(Context context, Intent intent)
@@ -37,38 +39,19 @@ namespace projekt_2.BroadcastRecievers
 
             var notificationClickedIntent = new Intent(common.Intents.GO_TO_PRODUCT_EDIT);
             notificationClickedIntent.PutExtra(common.Extras.ID, model.Id);
+            notificationClickedIntent.SetFlags(ActivityFlags.NewTask | ActivityFlags.ClearTask);
             var pendingIntent = PendingIntent.GetActivity(context, 0, notificationClickedIntent, 0);
 
-            CreateNotificationChannel(context);
-            CreateNotification(context, model, pendingIntent);
+            _notificationService.CreateNotificationChannel(_channelId, _channelName);
+            _notificationService.SendNotificationToChannel(_channelId,
+                context.GetString(Resource.String.product_created),
+                Resource.Mipmap.ic_launcher,
+                string.Format(context.GetString(Resource.String.product_created_template), model.Name, model.Price, model.Count),
+                pendingIntent,
+                NotificationCompat.PriorityDefault,
+                true );
         }
 
-        private static void CreateNotification(Context context, Product model, PendingIntent pendingIntent)
-        {
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, _channelId)
-                .SetContentTitle(context.GetString(Resource.String.product_created))
-                .SetSmallIcon(Resource.Mipmap.ic_launcher)
-                .SetContentText(string.Format(context.GetString(Resource.String.product_created_template), model.Name, model.Price, model.Count))
-                .SetContentIntent(pendingIntent)
-                .SetPriority(NotificationCompat.PriorityDefault)
-                .SetAutoCancel(true);
 
-            NotificationManagerCompat nm = NotificationManagerCompat.From(context);
-            nm.Notify(_notificationId++, notificationBuilder.Build());
-        }
-
-        private void CreateNotificationChannel(Context context)
-        {
-            NotificationChannel notificationChannel = new NotificationChannel(_channelId, _channelName, NotificationManager.ImportanceLow);
-            notificationChannel.EnableLights(true);
-            notificationChannel.LightColor = Color.Red;
-            notificationChannel.EnableVibration(true);
-            notificationChannel.SetVibrationPattern(new long[] { 100, 200, 300, 400, 500, 400, 300, 200, 400 });
-
-            NotificationManager notificationManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
-            notificationManager.CreateNotificationChannel(notificationChannel);
-
-
-        }
     }
 }
