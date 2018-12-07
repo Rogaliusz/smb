@@ -79,3 +79,5 @@ fabric.properties
 /src/projekt_2/obj
 /src/common/obj
 /.vs
+Debug
+/src/projekt_1/google-services.json

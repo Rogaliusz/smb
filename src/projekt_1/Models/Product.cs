@@ -7,8 +7,10 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Annotation;
 using Android.Views;
 using Android.Widget;
+using Java.IO;
 using SQLite;
 
 namespace projekt_1.Models
@@ -22,7 +24,6 @@ namespace projekt_1.Models
         public string Name { get; set; }
         public float Price { get; set; }
         public int Count { get; set; }
-        public bool Purchased { get; set; }
-            
+        public bool Purchased { get; set; }            
     }
 }

@@ -12,10 +12,18 @@ using Android.Views;
 using Android.Widget;
 using Autofac;
 using common.Services;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
 using projekt_1.Adapters;
 using projekt_1.Repositories;
+using projekt_1.Repositories.Firebase;
+using projekt_1.Repositories.Firebase.Contexts;
+using projekt_1.Repositories.Memory;
+using projekt_1.Repositories.Settings;
 using projekt_1.Services;
 using projekt_1.Settings;
+using Xamfire.Contexts.Auth;
 
 namespace projekt_1.IoC
 {
@@ -27,8 +35,15 @@ namespace projekt_1.IoC
 
         static MainContainer()
         {
+        }
+
+        public static void RegisterIoC(Context context)
+        {
             var builder = new ContainerBuilder();
             RegisterModules(builder);
+
+            builder.RegisterInstance(context)
+                .SingleInstance();
 
             Container = builder.Build();
         }
@@ -50,13 +65,34 @@ namespace projekt_1.IoC
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
+            builder.RegisterAssemblyTypes(Assembly)
+                .Where(x => x.IsAssignableTo<IFirebaseRepository>())
+                .AsImplementedInterfaces()
+                .SingleInstance();
+
             builder.RegisterType<SqlLiteSettings>()
+                .AsSelf()
+                .SingleInstance();
+
+            builder.RegisterType<FirebaseSettings>()
                 .AsSelf()
                 .SingleInstance();
 
             builder.RegisterType<ProductListAdapter>()
                 .AsSelf()
                 .InstancePerDependency();
+
+            builder.RegisterInstance<IAuthenticationContext>(Xamfire.Xamfire.AuthenticationContext)
+                .SingleInstance();
+
+            builder.RegisterInstance<ISettingsRepository>(new InMemorySettings())
+                .SingleInstance();
+
+            builder.RegisterType<UsersContext>()
+                .AsSelf()
+                .SingleInstance();
         }
+
+
     }
 }

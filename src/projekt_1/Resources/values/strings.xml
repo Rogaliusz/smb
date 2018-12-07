@@ -3,4 +3,15 @@
     <string name="action_settings">Settings</string>
     <string name="go_to_products">Products</string>
     <string name="go_to_settings">Settings</string>
+    <string name="email">Email</string>
+    <string name="password">Hasło</string>
+    <string name="confirm">Zatwierdz</string>
+    <string name="register">Zarejestruj</string>
+    <string name="login">Zaloguj</string>
+    <string name="goToRegister">Zarejestruj</string>
+    <string name="goToLogin">Wróć do logowania</string>
+    <string name="user_registered">Użytkownik zarejestrowany, możesz się zalogować</string>
+    <string name="register_problem">Błąd przy rejestracji, czy aby napewno nie podałeś wcześniej adresu?</string>
+    <string name="login_problem">Błędne poświadczenia, spróbuj ponownie</string>
+    <string name="register_weak_password">Twoje hasło jest za słabe, minimalna jego długość musi wynosić 6 znaków</string>
 </resources>

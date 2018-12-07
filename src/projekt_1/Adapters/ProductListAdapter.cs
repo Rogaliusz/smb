@@ -26,9 +26,9 @@ namespace projekt_1.Adapters
         private IList<Product> _products;
         private Context _context;
 
-        public ProductListAdapter(Context context)
+        public ProductListAdapter()
         {
-            this._context = context;
+            _context = IoC.MainContainer.Container.Resolve<Context>();
             _productRepository = IoC.MainContainer.Container.Resolve<IProductRepository>();
 
             RefreshData();

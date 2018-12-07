@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
@@ -6,11 +8,12 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Firebase;
 using projekt_1.Services.SqlLite;
 
 namespace projekt_1.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity]
     public class MainActivity : ActivityBase
     {
         private readonly ISqlLiteService _sqlLiteService = GetInstance<ISqlLiteService>();
@@ -29,11 +32,15 @@ namespace projekt_1.Activities
             _btnGoToSettings.Click += (s, e) => { StartActivity(typeof(SettingsActivity)); };
             _btnGoToProducts.Click += (s, e) => { StartActivity(typeof(ProductListActivity)); };
 
+            RegisterComponents();
+        }
+
+        private void RegisterComponents()
+        {
             _sqlLiteService.CreateDb();
         }
 
-        
 
-	}
+    }
 }
 

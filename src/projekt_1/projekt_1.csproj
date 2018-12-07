@@ -63,16 +63,26 @@
     <Compile Include="Activities\Products\ProductAcitivityBase.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Activities\Products\ProductListActivity.cs" />
-    <Compile Include="Adapters\ColorsSpinnerAdapter.cs" />
+    <Compile Include="Activities\Users\LoginActivity.cs" />
+    <Compile Include="Activities\Users\RegisterActivity.cs" />
     <Compile Include="Adapters\ProductListAdapter.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="IoC\MainContainer.cs" />
     <Compile Include="Models\Limitations\String.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Repositories\Firebase\Users\UsersContext.cs" />
+    <Compile Include="Repositories\Firebase\IFirebaseRepository.cs" />
+    <Compile Include="Repositories\Firebase\Products\ProductRepository.cs" />
+    <Compile Include="Repositories\Firebase\Users\UserRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\Products\IProductRepository.cs" />
-    <Compile Include="Repositories\Products\ProductRepository.cs" />
-    <Compile Include="Repositories\Settings\ISettingsRepository.cs" />
-    <Compile Include="Repositories\Settings\SettingsRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\Memory\InMemorySettings.cs" />
+    <Compile Include="Repositories\Sqlite\Products\ISqliteRepository.cs" />
+    <Compile Include="Repositories\IProductRepository.cs" />
+    <Compile Include="Repositories\Sqlite\ProductRepository.cs" />
+    <Compile Include="Repositories\ISettingsRepository.cs" />
+    <Compile Include="Repositories\SharedPreferences\SettingsRepository.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IService.cs" />
@@ -80,9 +90,13 @@
     <Compile Include="Services\Products\ProductService.cs" />
     <Compile Include="Services\SqlLite\ISqlLiteService.cs" />
     <Compile Include="Services\SqlLite\SqlLiteService.cs" />
+    <Compile Include="Settings\FirebaseSettings.cs" />
     <Compile Include="Settings\SqlLiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <GoogleServicesJson Include="google-services.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </GoogleServicesJson>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
@@ -122,6 +136,12 @@
     <PackageReference Include="Autofac">
       <Version>4.8.1</Version>
     </PackageReference>
+    <PackageReference Include="FireSharp">
+      <Version>2.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Ideine.ModernHttpClient">
+      <Version>3.2.2</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
     </PackageReference>
@@ -129,6 +149,9 @@
       <Version>1.5.231</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>60.1142.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\settings_activity.axml">
@@ -143,6 +166,14 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\My\Xamfire\src\Xamfire.Android\Xamfire.Android.csproj">
+      <Project>{df400d49-8a87-4fcf-8ea8-d6da0f32f757}</Project>
+      <Name>Xamfire.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\My\Xamfire\src\Xamfire\Xamfire.csproj">
+      <Project>{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC}</Project>
+      <Name>Xamfire</Name>
+    </ProjectReference>
     <ProjectReference Include="..\common\common.csproj">
       <Project>{94accb2a-e37a-49f5-9516-246fc593f083}</Project>
       <Name>common</Name>
@@ -156,6 +187,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\product_item_template.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\login_activity.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\register_activity.axml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

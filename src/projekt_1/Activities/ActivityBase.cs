@@ -24,7 +24,7 @@ namespace projekt_1.Activities
             => MainContainer.Container.Resolve<TInstance>();
 
         protected static TInstance GetInstance<TInstance>(Context ctx)
-            => MainContainer.Container.Resolve<TInstance>(new NamedParameter("context", ctx));
+            => MainContainer.Container.Resolve<TInstance>();
 
 
     }

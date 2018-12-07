@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "common", "src\common\common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projekt_2", "src\projekt_2\projekt_2.csproj", "{8DC4A2E7-F3B4-42DD-9D5F-F3B4BBE21BFD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamfire", "Xamfire", "{8DA35091-7705-4A3F-B891-A5790DADFFC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamfire", "..\..\..\My\Xamfire\src\Xamfire\Xamfire.csproj", "{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamfire.Android", "..\..\..\My\Xamfire\src\Xamfire.Android\Xamfire.Android.csproj", "{DF400D49-8A87-4FCF-8EA8-D6DA0F32F757}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,9 +36,21 @@ Global
 		{8DC4A2E7-F3B4-42DD-9D5F-F3B4BBE21BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DC4A2E7-F3B4-42DD-9D5F-F3B4BBE21BFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DC4A2E7-F3B4-42DD-9D5F-F3B4BBE21BFD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF400D49-8A87-4FCF-8EA8-D6DA0F32F757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF400D49-8A87-4FCF-8EA8-D6DA0F32F757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF400D49-8A87-4FCF-8EA8-D6DA0F32F757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF400D49-8A87-4FCF-8EA8-D6DA0F32F757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC} = {8DA35091-7705-4A3F-B891-A5790DADFFC9}
+		{DF400D49-8A87-4FCF-8EA8-D6DA0F32F757} = {8DA35091-7705-4A3F-B891-A5790DADFFC9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A39257BA-863B-4904-9E1F-2460A166EAE7}

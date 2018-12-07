@@ -25,7 +25,6 @@ namespace projekt_2.AndroidServices
         private const string SERVICE_CHANNEL_NAME = "service";
         private const string SERVICE_CHANNEL_ID = "555";
 
-        Handler _handler;
         BroadcastReceiver _productCreatedBroadcastReciever;
         INotificationService _notificationService;
 
@@ -37,7 +36,6 @@ namespace projekt_2.AndroidServices
 
             Toast.MakeText(this, "Product service was created", ToastLength.Long);
 
-            _handler = new Handler();
             _productCreatedBroadcastReciever = IoC.Container.GetInstance<ProductCreatedBroadcastReciever>();
             _notificationService = IoC.Container.GetInstance<INotificationService>();
 
