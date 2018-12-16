@@ -13,6 +13,7 @@ using Android.Widget;
 using Autofac;
 using common.Services;
 using projekt_1.Adapters;
+using projekt_1.Fragments;
 using projekt_1.Repositories;
 using projekt_1.Repositories.Firebase;
 using projekt_1.Repositories.Firebase.Contexts;
@@ -60,6 +61,11 @@ namespace projekt_1.IoC
             builder.RegisterAssemblyTypes(Assembly)
                 .Where(x => x.IsAssignableTo<IRepository>())
                 .AsImplementedInterfaces()
+                .SingleInstance();
+
+            builder.RegisterAssemblyTypes(Assembly)
+                .Where(x => x.IsAssignableTo<FragmentBase>())
+                .AsSelf()
                 .SingleInstance();
 
             builder.RegisterAssemblyTypes(Assembly)

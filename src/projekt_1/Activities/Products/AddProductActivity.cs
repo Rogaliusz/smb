@@ -23,7 +23,7 @@ namespace projekt_1.Activities.Products
             _productRepository.Insert(model);
             _productService.ProductWasCreated(model);
 
-            StartActivity(typeof(ProductListActivity));
+            OnBackPressed();
         }
 
         protected override string GetButtonName()

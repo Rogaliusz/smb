@@ -1,42 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-using Android.App;
-using Android.Content;
 using Android.Graphics;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using projekt_1.Repositories.Settings;
 
-namespace projekt_1.Activities
+namespace projekt_1.Fragments
 {
-    [Activity(Label = "@string/go_to_settings")]
-    public class SettingsActivity : ActivityBase
+    public class SettingsFragment : FragmentBase
     {
-
         private Spinner _spnColor;
         private EditText _txtSize;
         private Button _btnSave;
 
         private ISettingsRepository _settingsRepository;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.settings_activity);
+            var view = inflater.Inflate(Resource.Layout.settings_activity, container, false);
 
-            _spnColor = FindViewById<Spinner>(Resource.Id.spnColor);
-            _txtSize = FindViewById<EditText>(Resource.Id.txtSize);
-            _btnSave = FindViewById<Button>(Resource.Id.btnSave);
+            _spnColor = view.FindViewById<Spinner>(Resource.Id.spnColor);
+            _txtSize = view.FindViewById<EditText>(Resource.Id.txtSize);
+            _btnSave = view.FindViewById<Button>(Resource.Id.btnSave);
 
-            _settingsRepository = GetInstance<ISettingsRepository>(this);
+            _settingsRepository = GetInstance<ISettingsRepository>(Context);
 
             var colors = new[] { Color.Black, Color.DarkRed, Color.Blue };
-            var adapter = new ArrayAdapter<Color>(this, Resource.Layout.support_simple_spinner_dropdown_item, colors);
+            var adapter = new ArrayAdapter<Color>(Context, Resource.Layout.support_simple_spinner_dropdown_item, colors);
             adapter.SetDropDownViewResource(Resource.Layout.support_simple_spinner_dropdown_item);
             _spnColor.Adapter = adapter;
 
@@ -48,7 +39,8 @@ namespace projekt_1.Activities
 
             var savedSize = _settingsRepository.Size;
             _txtSize.Text = savedSize.ToString();
-                
+
+            return view;
         }
 
         private void OnSave_Clicked(object sender, EventArgs e)

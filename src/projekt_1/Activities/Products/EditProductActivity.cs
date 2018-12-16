@@ -36,7 +36,8 @@ namespace projekt_1.Activities.Products
         {
             var model = GetModel();
             _productRepository.Update(model);
-            StartActivity(typeof(ProductListActivity));
+
+            OnBackPressed();
         }
 
         protected override string GetButtonName()

@@ -10,6 +10,8 @@ using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Firebase;
+using projekt_1.Adapters;
+using projekt_1.Adapters.Pager;
 using projekt_1.Services.SqlLite;
 
 namespace projekt_1.Activities
@@ -19,7 +21,6 @@ namespace projekt_1.Activities
     {
         private readonly ISqlLiteService _sqlLiteService = GetInstance<ISqlLiteService>();
 
-        private Toolbar _toolbar;
         private TabLayout _tabLayout;
         private ViewPager _viewPager;
 
@@ -28,11 +29,8 @@ namespace projekt_1.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            _toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             _tabLayout = FindViewById<TabLayout>(Resource.Id.tab_layout);
             _viewPager = FindViewById<ViewPager>(Resource.Id.pager);
-
-            //SetSupportActionBar(_toolbar);
 
             InitalizeTabLayout();
             InitalizeViewPager();
@@ -46,6 +44,8 @@ namespace projekt_1.Activities
             _tabLayout.AddTab(CreateTab("shops"));
             _tabLayout.AddTab(CreateTab("map"));
             _tabLayout.AddTab(CreateTab("settings"));
+
+            _tabLayout.TabGravity = TabLayout.GravityCenter;
         }
 
         private TabLayout.Tab CreateTab(string name)
@@ -53,15 +53,22 @@ namespace projekt_1.Activities
 
         private void InitalizeViewPager()
         {
+            var adapter = new MainActivityPagerAdapter(SupportFragmentManager, _tabLayout.TabCount);
 
+            _viewPager.Adapter = adapter;
+            //_viewPager.Click += viewPager_Click;
+
+        }
+
+        private void viewPager_Click(object sender, EventArgs e)
+        {
+            _viewPager.CurrentItem = 0;
         }
 
         private void RegisterComponents()
         {
             _sqlLiteService.CreateDb();
         }
-
-
     }
 }
 

@@ -11,12 +11,13 @@ using Android.Views;
 using Android.Widget;
 using Autofac;
 using projekt_1.Activities.Products;
+using projekt_1.Adapters.List;
 using projekt_1.Models;
 using projekt_1.Repositories.Products;
 
 namespace projekt_1.Adapters
 {
-    public class ProductListAdapter : BaseAdapter<Product>
+    public class ProductListAdapter : ListAdapterBase<Product>
     {
         public override Product this[int position] => _products[position];
         public override int Count => _products.Count;
@@ -125,7 +126,6 @@ namespace projekt_1.Adapters
 
     public class ProductListAdapterViewHolder : Java.Lang.Object
     {
-        //Your adapter views to re-use
         public TextView Name { get; set; }
         public TextView Price { get; set; }
         public TextView Count { get; set; }

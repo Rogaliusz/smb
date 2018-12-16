@@ -17,7 +17,6 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
@@ -61,11 +60,8 @@
     <Compile Include="Activities\Products\AddProductActivity.cs" />
     <Compile Include="Activities\Products\EditProductActivity.cs" />
     <Compile Include="Activities\Products\ProductAcitivityBase.cs" />
-    <Compile Include="Activities\SettingsActivity.cs" />
-    <Compile Include="Activities\Products\ProductListActivity.cs" />
     <Compile Include="Activities\Users\LoginActivity.cs" />
     <Compile Include="Activities\Users\RegisterActivity.cs" />
-    <Compile Include="Adapters\ProductListAdapter.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="IoC\MainContainer.cs" />
     <Compile Include="Models\Limitations\String.cs" />
@@ -95,6 +91,15 @@
     <Compile Include="Services\SqlLite\SqlLiteService.cs" />
     <Compile Include="Settings\FirebaseSettings.cs" />
     <Compile Include="Settings\SqlLiteSettings.cs" />
+    <Compile Include="Fragments\ProductListFragment.cs" />
+    <Compile Include="Fragments\SettingsFragment.cs" />
+    <Compile Include="Fragments\FragmentBase.cs" />
+    <Compile Include="Fragments\ShopListFragment.cs" />
+    <Compile Include="Fragments\ShopMapFragment.cs" />
+    <Compile Include="Adapters\Pager\MainActivityPagerAdapter.cs" />
+    <Compile Include="Adapters\List\ProductListAdapter.cs" />
+    <Compile Include="Adapters\Pager\PageAdapterBase.cs" />
+    <Compile Include="Adapters\List\ListAdapterBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json">
@@ -134,6 +139,11 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
+    <AndroidResource Include="Resources\layout\shops_fragment.axml" />
+    <AndroidResource Include="Resources\layout\shop_item_template.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac">
@@ -166,17 +176,17 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\My\Xamfire\src\Xamfire.Android\Xamfire.Android.csproj">
-      <Project>{df400d49-8a87-4fcf-8ea8-d6da0f32f757}</Project>
-      <Name>Xamfire.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\My\Xamfire\src\Xamfire\Xamfire.csproj">
-      <Project>{4D140B2D-02C5-4EC0-8E47-BCD7D835FBEC}</Project>
-      <Name>Xamfire</Name>
-    </ProjectReference>
     <ProjectReference Include="..\common\common.csproj">
       <Project>{94accb2a-e37a-49f5-9516-246fc593f083}</Project>
       <Name>common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Xamfire\src\Xamfire\Xamfire.csproj">
+      <Project>{EF987E79-2A4D-4BD5-A411-684C70FEBCBF}</Project>
+      <Name>Xamfire</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Xamfire\src\Xamfire.Android\Xamfire.Android.csproj">
+      <Project>{DF400D49-8A87-4FCF-8EA8-D6DA0F32F757}</Project>
+      <Name>Xamfire.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +203,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fragments\" />
+    <Folder Include="Adapters\List\" />
+    <Folder Include="Adapters\Pager\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\login_activity.axml">
