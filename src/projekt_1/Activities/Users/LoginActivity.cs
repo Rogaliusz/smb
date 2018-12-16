@@ -50,7 +50,7 @@ namespace projekt_1.Activities.Users
                 try
                 {
                     await _userRepository.LoginAsync(_txtEmail.Text, _txtPassword.Text);
-                    StartActivity(typeof(ProductListActivity));
+                    StartActivity(typeof(MainActivity));
                 }
                 catch (Exception ex)
                 {

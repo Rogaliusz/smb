@@ -191,7 +191,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Fragments\" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\login_activity.axml">
       <SubType>Designer</SubType>
