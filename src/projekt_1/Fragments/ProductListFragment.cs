@@ -9,7 +9,7 @@ using projekt_1.Adapters;
 
 namespace projekt_1.Fragments
 {
-    public class ProductListFragment : FragmentBase
+    public class ProductListFragment : FragmentBase, IFragment
     {
         private FloatingActionButton _fab;
         private ListView _lst;

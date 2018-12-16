@@ -8,7 +8,7 @@ using projekt_1.Repositories.Settings;
 
 namespace projekt_1.Fragments
 {
-    public class SettingsFragment : FragmentBase
+    public class SettingsFragment : FragmentBase, IFragment
     {
         private Spinner _spnColor;
         private EditText _txtSize;

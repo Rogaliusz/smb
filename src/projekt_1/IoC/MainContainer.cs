@@ -65,7 +65,7 @@ namespace projekt_1.IoC
                 .SingleInstance();
 
             builder.RegisterAssemblyTypes(Assembly)
-                .Where(x => x.IsAssignableTo<FragmentBase>())
+                .Where(x => x.IsAssignableTo<IFragment>())
                 .AsSelf()
                 .SingleInstance();
 

@@ -104,6 +104,11 @@
     <Compile Include="Activities\Shops\ShopActivityBase.cs" />
     <Compile Include="Activities\Shops\AddShopActivity.cs" />
     <Compile Include="Activities\Shops\EditShopActivity.cs" />
+    <Compile Include="Services\Geolocation\Geopoint.cs" />
+    <Compile Include="Services\Geolocation\IGeolocationService.cs" />
+    <Compile Include="Services\Geolocation\GeolocationService.cs" />
+    <Compile Include="Framework\TaskUtils.cs" />
+    <Compile Include="Fragments\IFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json">
@@ -149,6 +154,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\shop_activity.axml" />
+    <AndroidResource Include="Resources\layout\map_fragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac">
@@ -165,6 +171,12 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Geolocator">
+      <Version>4.5.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
       <Version>60.1142.1</Version>
     </PackageReference>
   </ItemGroup>
@@ -211,6 +223,8 @@
     <Folder Include="Adapters\List\" />
     <Folder Include="Adapters\Pager\" />
     <Folder Include="Activities\Shops\" />
+    <Folder Include="Services\Geolocation\" />
+    <Folder Include="Framework\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\login_activity.axml">

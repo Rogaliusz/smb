@@ -36,6 +36,11 @@ namespace projekt_1.Repositories.Firebase.Users
         {
             await _authenticationContext.LoginUserAsync(username, password);
             var user = await _usersContext.GetAsync(username.Base64Encode());
+
+            //TODO check this null 
+            user.Shops = user.Shops.Where(x => x != null).ToList();
+            user.Products = user.Products.Where(x => x != null).ToList();
+
             _settingsRepository.User = user;
         }
 

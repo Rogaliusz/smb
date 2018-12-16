@@ -19,6 +19,10 @@ namespace projekt_1.Activities.Shops
         protected async override void DoneClick()
         {
             var model = GetModel();
+            var location = await _geolocationService.GetCurrentGeolocationAsync();
+
+            model.Latitude = location.Latitude;
+            model.Longitude = location.Longitude;
 
             await _shopRepository.InsertAsync(model);
 

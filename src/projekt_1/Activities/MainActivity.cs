@@ -10,13 +10,14 @@ using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Firebase;
+using Plugin.CurrentActivity;
 using projekt_1.Adapters;
 using projekt_1.Adapters.Pager;
 using projekt_1.Services.SqlLite;
 
 namespace projekt_1.Activities
 {
-    [Activity]
+    [Activity(Theme = "@style/Theme.AppCompat.Light")]
     public class MainActivity : ActivityBase
     {
         private readonly ISqlLiteService _sqlLiteService = GetInstance<ISqlLiteService>();
@@ -36,6 +37,8 @@ namespace projekt_1.Activities
             InitalizeViewPager();
 
             RegisterComponents();
+
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
         }
 
         private void InitalizeTabLayout()
@@ -46,6 +49,13 @@ namespace projekt_1.Activities
             _tabLayout.AddTab(CreateTab("settings"));
 
             _tabLayout.TabGravity = TabLayout.GravityCenter;
+
+            _tabLayout.Click += _tabLayout_Click;
+        }
+
+        void _tabLayout_Click(object sender, EventArgs e)
+        {
+            _viewPager.CurrentItem = 0;
         }
 
         private TabLayout.Tab CreateTab(string name)
@@ -56,18 +66,17 @@ namespace projekt_1.Activities
             var adapter = new MainActivityPagerAdapter(SupportFragmentManager, _tabLayout.TabCount);
 
             _viewPager.Adapter = adapter;
-            //_viewPager.Click += viewPager_Click;
-
-        }
-
-        private void viewPager_Click(object sender, EventArgs e)
-        {
-            _viewPager.CurrentItem = 0;
         }
 
         private void RegisterComponents()
         {
             _sqlLiteService.CreateDb();
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        {
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

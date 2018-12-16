@@ -3,12 +3,14 @@ using Android.OS;
 using Android.Widget;
 using projekt_1.Models;
 using projekt_1.Repositories;
+using projekt_1.Services.Geolocation;
 
 namespace projekt_1.Activities.Shops
 {
     public abstract class ShopActivityBase : ActivityBase
     {
         protected readonly IShopRepository _shopRepository = GetInstance<IShopRepository>();
+        protected readonly IGeolocationService _geolocationService = GetInstance<IGeolocationService>();
 
         protected TextView _txtName;
         protected TextView _txtDescrition;
