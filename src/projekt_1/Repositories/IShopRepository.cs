@@ -13,7 +13,7 @@ using projekt_1.Models;
 
 namespace projekt_1.Repositories
 {
-    interface IShopRepository : IRepository
+    public interface IShopRepository : IRepository
     {
         Task InsertAsync(Shop shop);
         Task UpdateAsync(Shop shop);

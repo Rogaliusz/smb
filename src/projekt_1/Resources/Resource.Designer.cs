@@ -4041,6 +4041,9 @@ namespace projekt_1
 			// aapt resource value: 0x7f0b003b
 			public const int CTRL = 2131427387;
 			
+			// aapt resource value: 0x7f0b00c8
+			public const int Description = 2131427528;
+			
 			// aapt resource value: 0x7f0b003c
 			public const int FUNCTION = 2131427388;
 			
@@ -4104,8 +4107,8 @@ namespace projekt_1
 			// aapt resource value: 0x7f0b0063
 			public const int action_mode_close_button = 2131427427;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int action_settings = 2131427533;
+			// aapt resource value: 0x7f0b00d1
+			public const int action_settings = 2131427537;
 			
 			// aapt resource value: 0x7f0b00a8
 			public const int action_text = 2131427496;
@@ -4341,14 +4344,17 @@ namespace projekt_1
 			// aapt resource value: 0x7f0b00c0
 			public const int lstProducts = 2131427520;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int masked = 2131427532;
+			// aapt resource value: 0x7f0b00cd
+			public const int lstShops = 2131427533;
+			
+			// aapt resource value: 0x7f0b00d0
+			public const int masked = 2131427536;
 			
 			// aapt resource value: 0x7f0b00ac
 			public const int media_actions = 2131427500;
 			
-			// aapt resource value: 0x7f0b00ca
-			public const int message = 2131427530;
+			// aapt resource value: 0x7f0b00ce
+			public const int message = 2131427534;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int middle = 2131427385;
@@ -4421,6 +4427,9 @@ namespace projekt_1
 			
 			// aapt resource value: 0x7f0b000e
 			public const int save_scale_type = 2131427342;
+			
+			// aapt resource value: 0x7f0b00ca
+			public const int sbRadius = 2131427530;
 			
 			// aapt resource value: 0x7f0b0031
 			public const int screen = 2131427377;
@@ -4602,8 +4611,8 @@ namespace projekt_1
 			// aapt resource value: 0x7f0b00bf
 			public const int txtDelete = 2131427519;
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int txtDescription = 2131427528;
+			// aapt resource value: 0x7f0b00cb
+			public const int txtDescription = 2131427531;
 			
 			// aapt resource value: 0x7f0b00be
 			public const int txtEdit = 2131427518;
@@ -4621,7 +4630,10 @@ namespace projekt_1
 			public const int txtPrice = 2131427515;
 			
 			// aapt resource value: 0x7f0b00c9
-			public const int txtRound = 2131427529;
+			public const int txtRadiusValue = 2131427529;
+			
+			// aapt resource value: 0x7f0b00cc
+			public const int txtRound = 2131427532;
 			
 			// aapt resource value: 0x7f0b00c4
 			public const int txtSize = 2131427524;
@@ -4641,8 +4653,8 @@ namespace projekt_1
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int visible = 2131427531;
+			// aapt resource value: 0x7f0b00cf
+			public const int visible = 2131427535;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int wide = 2131427362;
@@ -4911,16 +4923,19 @@ namespace projekt_1
 			public const int settings_activity = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int shop_item_template = 2130968642;
+			public const int shop_activity = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int shops_fragment = 2130968643;
+			public const int shop_item_template = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int support_simple_spinner_dropdown_item = 2130968644;
+			public const int shops_fragment = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int tooltip = 2130968645;
+			public const int support_simple_spinner_dropdown_item = 2130968645;
+			
+			// aapt resource value: 0x7f040046
+			public const int tooltip = 2130968646;
 			
 			static Layout()
 			{

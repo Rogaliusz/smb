@@ -100,6 +100,10 @@
     <Compile Include="Adapters\List\ProductListAdapter.cs" />
     <Compile Include="Adapters\Pager\PageAdapterBase.cs" />
     <Compile Include="Adapters\List\ListAdapterBase.cs" />
+    <Compile Include="Adapters\List\ShopListAdapter.cs" />
+    <Compile Include="Activities\Shops\ShopActivityBase.cs" />
+    <Compile Include="Activities\Shops\AddShopActivity.cs" />
+    <Compile Include="Activities\Shops\EditShopActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json">
@@ -144,6 +148,7 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\shop_activity.axml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac">
@@ -205,6 +210,7 @@
     <Folder Include="Fragments\" />
     <Folder Include="Adapters\List\" />
     <Folder Include="Adapters\Pager\" />
+    <Folder Include="Activities\Shops\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\login_activity.axml">

@@ -13,6 +13,7 @@ using Android.Widget;
 using Autofac;
 using common.Services;
 using projekt_1.Adapters;
+using projekt_1.Adapters.List;
 using projekt_1.Fragments;
 using projekt_1.Repositories;
 using projekt_1.Repositories.Firebase;
@@ -82,6 +83,10 @@ namespace projekt_1.IoC
                 .SingleInstance();
 
             builder.RegisterType<ProductListAdapter>()
+                .AsSelf()
+                .InstancePerDependency();
+
+            builder.RegisterType<ShopListAdapter>()
                 .AsSelf()
                 .InstancePerDependency();
 
