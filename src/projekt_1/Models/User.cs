@@ -21,6 +21,8 @@ namespace projekt_1.Models
 
         public IList<Product> Products { get; set; } = new List<Product>();
 
+        public IList<Shop> Shops { get; set; } = new List<Shop>();
+
         public User(string email)
         {
             Email = email;

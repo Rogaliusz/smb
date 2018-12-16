@@ -70,12 +70,15 @@
     <Compile Include="IoC\MainContainer.cs" />
     <Compile Include="Models\Limitations\String.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Shop.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Repositories\Firebase\Shops\ShopRepository.cs" />
     <Compile Include="Repositories\Firebase\Users\UsersContext.cs" />
     <Compile Include="Repositories\Firebase\IFirebaseRepository.cs" />
     <Compile Include="Repositories\Firebase\Products\ProductRepository.cs" />
     <Compile Include="Repositories\Firebase\Users\UserRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IShopRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\Memory\InMemorySettings.cs" />
     <Compile Include="Repositories\Sqlite\Products\ISqliteRepository.cs" />
@@ -135,9 +138,6 @@
   <ItemGroup>
     <PackageReference Include="Autofac">
       <Version>4.8.1</Version>
-    </PackageReference>
-    <PackageReference Include="FireSharp">
-      <Version>2.0.4</Version>
     </PackageReference>
     <PackageReference Include="Ideine.ModernHttpClient">
       <Version>3.2.2</Version>

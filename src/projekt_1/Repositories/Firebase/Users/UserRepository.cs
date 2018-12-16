@@ -9,8 +9,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using FireSharp.Interfaces;
-using FireSharp.Response;
 using projekt_1.Extensions;
 using projekt_1.Repositories.Firebase.Contexts;
 using projekt_1.Repositories.Settings;
@@ -44,6 +42,7 @@ namespace projekt_1.Repositories.Firebase.Users
         public async Task RegisterAsync(string username, string password)
         {
             await _authenticationContext.RegisterUserAsync(username, password);
+            await _authenticationContext.LoginUserAsync(username, password);
             await _usersContext.InsertOrUpdateAsync(new Models.User(username));
         }
     }
