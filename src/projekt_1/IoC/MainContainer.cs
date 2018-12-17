@@ -12,6 +12,8 @@ using Android.Views;
 using Android.Widget;
 using Autofac;
 using common.Services;
+using Plugin.Geofence;
+using Plugin.Geofence.Abstractions;
 using projekt_1.Adapters;
 using projekt_1.Adapters.List;
 using projekt_1.Fragments;
@@ -89,6 +91,9 @@ namespace projekt_1.IoC
             builder.RegisterType<ShopListAdapter>()
                 .AsSelf()
                 .InstancePerDependency();
+
+            builder.RegisterInstance<IGeofence>(CrossGeofence.Current)
+                .SingleInstance();
 
             builder.RegisterInstance<IAuthenticationContext>(Xamfire.Xamfire.AuthenticationContext)
                 .SingleInstance();

@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using projekt_1.Models;
@@ -14,6 +17,10 @@ namespace projekt_1.Fragments
     {
         private readonly IGeolocationService _geolocationService;
         private readonly ISettingsRepository _settingsRepository;
+
+        private CircleOptions _pointer;
+        private GoogleMap _googleMap;
+        private System.Timers.Timer _timer;
 
         public ShopMapFragment(IGeolocationService geolocationService, ISettingsRepository settingsRepository)
         {
@@ -44,23 +51,36 @@ namespace projekt_1.Fragments
 
         public async void OnMapReady(GoogleMap googleMap)
         {
-            await SetCurrentPostitionAsync(googleMap);
+            _googleMap = googleMap;
+            _timer = new System.Timers.Timer(10 * 1000);
+            _timer.Elapsed += _timer_Elapsed;
+            _timer.Start();
+
+            await SetCurrentPostitionAsync();
 
             var user = _settingsRepository.User;
+
+            _googleMap.MyLocationEnabled = true;
 
             foreach (var shop in user.Shops)
             {
                 googleMap.AddMarker(CreateMarkerOptions(shop));
+                googleMap.AddCircle(CreateCircleOptions(shop));
             }
         }
 
-        private async Task SetCurrentPostitionAsync(GoogleMap googleMap)
+        private async void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             var currentLocation = await _geolocationService.GetCurrentGeolocationAsync();
+            var location = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
+        }
 
-            LatLng location = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
+        private async Task SetCurrentPostitionAsync()
+        {
+            var currentLocation = await _geolocationService.GetCurrentGeolocationAsync();
+            var location = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
 
-            CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
+            var builder = CameraPosition.InvokeBuilder();
             builder.Target(location);
             builder.Zoom(18);
             builder.Bearing(155);
@@ -68,7 +88,16 @@ namespace projekt_1.Fragments
 
             var cameraPosition = builder.Build();
             var cameraUpdate = CameraUpdateFactory.NewCameraPosition(cameraPosition);
-            googleMap.MoveCamera(cameraUpdate);
+
+            _googleMap.MoveCamera(cameraUpdate);
+        }
+
+        private CircleOptions CreateCircleOptions(Shop shop)
+        {
+            return new CircleOptions()
+                .InvokeCenter(new LatLng(shop.Latitude, shop.Longitude))
+                .InvokeRadius(shop.Radius)
+                .InvokeFillColor(Color.Red);
         }
 
         private MarkerOptions CreateMarkerOptions (Shop shop)
@@ -77,6 +106,7 @@ namespace projekt_1.Fragments
             marker.SetPosition(new LatLng(shop.Latitude, shop.Longitude));
             marker.SetTitle(shop.Name);
             marker.SetSnippet(shop.Description);
+
             return marker;
         } 
     }

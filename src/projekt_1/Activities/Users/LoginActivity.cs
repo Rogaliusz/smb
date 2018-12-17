@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using projekt_1.Repositories;
+using projekt_1.Services.Geolocation;
 
 namespace projekt_1.Activities.Users
 {
@@ -30,6 +31,7 @@ namespace projekt_1.Activities.Users
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.login_activity);
 
+            Plugin.Geofence.CrossGeofence.Initialize<CrossGeofenceListener>();
             Xamfire.Android.Xamfire.Initialization(this);
             IoC.MainContainer.RegisterIoC(this);
 

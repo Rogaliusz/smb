@@ -26,14 +26,15 @@
         android:id="@+id/txtRadiusValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Radius: "/>
+        android:text="Radius: 1000"/>
     
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:hint="Radius"
-        android:max="100"
+        android:min="10"
+        android:max="40"
         android:id="@+id/sbRadius" />
     
    <Button

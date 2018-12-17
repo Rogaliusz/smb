@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace projekt_1.Activities.Products
 {
-    [Activity(Label = "Edit product", Exported = true)]
+    [Activity(Label = "Edit product", Exported = true, Theme = "@style/Theme.AppCompat.Light")]
     [IntentFilter(new[] { common.Intents.GO_TO_PRODUCT_EDIT }, Categories = new []{ Intent.CategoryDefault})]
     public class EditProductActivity : ProductAcitivityBase
     {

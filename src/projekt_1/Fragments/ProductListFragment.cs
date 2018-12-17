@@ -13,6 +13,7 @@ namespace projekt_1.Fragments
     {
         private FloatingActionButton _fab;
         private ListView _lst;
+        private ProductListAdapter _adapter;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -21,7 +22,8 @@ namespace projekt_1.Fragments
             _lst = view.FindViewById<ListView>(Resource.Id.lstProducts);
             _fab = view.FindViewById<FloatingActionButton>(Resource.Id.fabAdd);
 
-            _lst.Adapter = GetInstance<ProductListAdapter>(Context);
+            _adapter = GetInstance<ProductListAdapter>(Context);
+            _lst.Adapter = _adapter;
             _fab.Click += (e, s) => { GoToAddProductActivity(); };
 
             return view;
@@ -34,9 +36,11 @@ namespace projekt_1.Fragments
             StartActivity(intent);
         }
 
-        public override void OnAttach(Context context)
+        public override void OnResume()
         {
-            base.OnAttach(context);
+            base.OnResume();
+
+            _adapter.RefreshData();
         }
     }
 }

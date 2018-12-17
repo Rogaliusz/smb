@@ -19,6 +19,7 @@ using projekt_1.IoC;
 
 namespace projekt_1.Activities
 {
+    [Activity(Theme = "@style/Theme.AppCompat.Light")]
     public abstract class ActivityBase : AppCompatActivity
     {
         protected static TInstance GetInstance<TInstance>()

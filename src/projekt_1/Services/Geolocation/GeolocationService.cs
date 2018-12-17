@@ -4,6 +4,7 @@ using Android.Content;
 using Android.Locations;
 using Android.OS;
 using Android.Runtime;
+using Plugin.Geofence;
 using Plugin.Geolocator;
 using projekt_1.Framework;
 
@@ -13,6 +14,16 @@ namespace projekt_1.Services.Geolocation
     {
         public GeolocationService()
         {
+        }
+
+        public async Task StartListeningGeolocationAsync()
+        {
+            await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(10), 1.0);
+        }
+
+        public async Task StopListeningGeolocationAsync()
+        {
+            await CrossGeolocator.Current.StopListeningAsync();
         }
 
         public async Task<IGeopoint> GetCurrentGeolocationAsync()

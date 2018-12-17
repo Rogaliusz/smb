@@ -51,7 +51,7 @@ namespace projekt_1.Adapters
 
             holder.Name.Text = product.Name;
             holder.Description.Text = product.Description.ToString();
-            holder.Round.Text = product.RoundSize.ToString();
+            holder.Round.Text = product.Radius.ToString();
 
             return view;
         }
@@ -95,7 +95,7 @@ namespace projekt_1.Adapters
             RefreshData();
         }
 
-        public async void RefreshData()
+        public override async void RefreshData()
         {
             _shops = ( await _shopRepository.GetAllAsync()).ToList();
             NotifyDataSetChanged();

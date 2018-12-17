@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace projekt_1.Activities.Products
 {
-    [Activity(Label="Add new product")]
+    [Activity(Label="Add new product", Theme = "@style/Theme.AppCompat.Light")]
     public class AddProductActivity : ProductAcitivityBase
     {
  

@@ -13,6 +13,7 @@ using Firebase;
 using Plugin.CurrentActivity;
 using projekt_1.Adapters;
 using projekt_1.Adapters.Pager;
+using projekt_1.Services.Geolocation;
 using projekt_1.Services.SqlLite;
 
 namespace projekt_1.Activities
@@ -21,6 +22,7 @@ namespace projekt_1.Activities
     public class MainActivity : ActivityBase
     {
         private readonly ISqlLiteService _sqlLiteService = GetInstance<ISqlLiteService>();
+        private readonly IGeolocationService _geolocationService = GetInstance<IGeolocationService>();
 
         private TabLayout _tabLayout;
         private ViewPager _viewPager;
@@ -39,6 +41,8 @@ namespace projekt_1.Activities
             RegisterComponents();
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
+
+            _geolocationService.StartListeningGeolocationAsync();
         }
 
         private void InitalizeTabLayout()
@@ -50,12 +54,12 @@ namespace projekt_1.Activities
 
             _tabLayout.TabGravity = TabLayout.GravityCenter;
 
-            _tabLayout.Click += _tabLayout_Click;
+            _tabLayout.TabSelected += _tabLayout_Click;
         }
 
-        void _tabLayout_Click(object sender, EventArgs e)
+        private void _tabLayout_Click(object sender, TabLayout.TabSelectedEventArgs e)
         {
-            _viewPager.CurrentItem = 0;
+            _viewPager.CurrentItem = e.Tab.Position;
         }
 
         private TabLayout.Tab CreateTab(string name)

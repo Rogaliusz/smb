@@ -12,6 +12,7 @@ using Android.Widget;
 using projekt_1.Models;
 using projekt_1.Repositories.Firebase.Contexts;
 using projekt_1.Repositories.Settings;
+using projekt_1.Services.Geolocation;
 
 namespace projekt_1.Repositories.Firebase.Shops
 {
@@ -20,12 +21,14 @@ namespace projekt_1.Repositories.Firebase.Shops
         private readonly UsersContext _usersContext;
         private readonly ISettingsRepository _settingsRepository;
         private readonly User _user;
+        private readonly IGeofenceService _geofenceService;
 
-        public ShopRepository(UsersContext usersContext, ISettingsRepository settingsRepository)
+        public ShopRepository(UsersContext usersContext, ISettingsRepository settingsRepository, IGeofenceService geofenceService)
         {
             _usersContext = usersContext;
             _settingsRepository = settingsRepository;
             _user = _settingsRepository.User;
+            _geofenceService = geofenceService;
         }
 
         public async Task DeleteAsync(Guid id)
@@ -50,6 +53,9 @@ namespace projekt_1.Repositories.Firebase.Shops
         {
             _user.Shops.Add(shop);
             await _usersContext.InsertOrUpdateAsync(_user);
+
+            _geofenceService.SetGeofenceTrigger(shop.Latitude, shop.Longitude, shop.Radius,
+                $"Entered into {shop.Name}", $"You leaved {shop.Name} Why ;-(!", shop.Name);
         }
 
         public async Task UpdateAsync(Shop shop)

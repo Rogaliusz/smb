@@ -1,4 +1,5 @@
 ﻿using System;
+using Android.App;
 using Android.OS;
 using Android.Widget;
 using projekt_1.Models;
@@ -7,6 +8,7 @@ using projekt_1.Services.Geolocation;
 
 namespace projekt_1.Activities.Shops
 {
+    [Activity(Theme = "@style/Theme.AppCompat.Light")]
     public abstract class ShopActivityBase : ActivityBase
     {
         protected readonly IShopRepository _shopRepository = GetInstance<IShopRepository>();
@@ -63,7 +65,7 @@ namespace projekt_1.Activities.Shops
             {
                 Id = _id,
                 Description = _txtDescrition.Text,
-                RoundSize = _sbRadius.Progress,
+                Radius = _sbRadius.Progress,
                 Name = _txtName.Text
             };
 

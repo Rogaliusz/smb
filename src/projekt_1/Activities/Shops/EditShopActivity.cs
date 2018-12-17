@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace projekt_1.Activities.Shops
 {
-    [Activity(Label = "EditShopActivity")]
+    [Activity(Label = "EditShopActivity", Theme = "@style/Theme.AppCompat.Light")]
     public class EditShopActivity : ShopActivityBase
     {
         protected override async void DoneClick()
@@ -43,7 +43,7 @@ namespace projekt_1.Activities.Shops
             _id = id;
             _txtDescrition.Text = model.Description;
             _txtName.Text = model.Name;
-            _sbRadius.Progress = model.RoundSize;
+            _sbRadius.Progress = model.Radius;
         }
     }
 }

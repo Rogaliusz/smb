@@ -115,7 +115,7 @@ namespace projekt_1.Adapters
             };
         }
 
-        public void RefreshData()
+        public override void RefreshData()
         {
             _products = _productRepository.GetProducts().ToList();
             NotifyDataSetChanged();

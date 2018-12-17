@@ -12,6 +12,7 @@ using Android.Widget;
 using projekt_1.Extensions;
 using projekt_1.Repositories.Firebase.Contexts;
 using projekt_1.Repositories.Settings;
+using projekt_1.Services.Geolocation;
 using projekt_1.Settings;
 using Xamfire.Contexts.Auth;
 
@@ -22,14 +23,17 @@ namespace projekt_1.Repositories.Firebase.Users
         private readonly IAuthenticationContext _authenticationContext;
         private readonly UsersContext _usersContext;
         private readonly ISettingsRepository _settingsRepository;
+        private readonly IGeofenceService _geofenceService;
 
         public UserRepository(IAuthenticationContext authenticationContext, 
             UsersContext usersContext, 
-            ISettingsRepository settingsRepository)
+            ISettingsRepository settingsRepository, 
+            IGeofenceService geofenceService)
         {
             _authenticationContext = authenticationContext;
             _usersContext = usersContext;
             _settingsRepository = settingsRepository;
+            _geofenceService = geofenceService;
         }
 
         public async Task LoginAsync(string username, string password)
@@ -42,6 +46,12 @@ namespace projekt_1.Repositories.Firebase.Users
             user.Products = user.Products.Where(x => x != null).ToList();
 
             _settingsRepository.User = user;
+
+            foreach (var shop in user.Shops)
+            {
+                _geofenceService.SetGeofenceTrigger(shop.Latitude, shop.Longitude, shop.Radius,
+                    $"Entered into {shop.Name}", $"You leaved {shop.Name} Why ;-(!", shop.Name);
+            }
         }
 
         public async Task RegisterAsync(string username, string password)

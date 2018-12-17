@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace projekt_1.Activities.Shops
 {
-    [Activity(Label = "Add shop")]
+    [Activity(Label = "Add shop", Theme = "@style/Theme.AppCompat.Light")]
     public class AddShopActivity : ShopActivityBase
     {
         protected async override void DoneClick()
