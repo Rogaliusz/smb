@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using System.Runtime.Remoting.Messaging;
 
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Autofac;
 using common.Services;
 using Plugin.Geofence;
 using Plugin.Geofence.Abstractions;
 using projekt_1.Adapters;
-using projekt_1.Adapters.List;
 using projekt_1.Fragments;
+using projekt_1.Messanger;
 using projekt_1.Repositories;
 using projekt_1.Repositories.Firebase;
 using projekt_1.Repositories.Firebase.Contexts;
@@ -41,6 +35,7 @@ namespace projekt_1.IoC
         public static void RegisterIoC(Context context)
         {
             var builder = new ContainerBuilder();
+
             RegisterModules(builder);
 
             builder.RegisterInstance(context)
@@ -98,14 +93,16 @@ namespace projekt_1.IoC
             builder.RegisterInstance<IAuthenticationContext>(Xamfire.Xamfire.AuthenticationContext)
                 .SingleInstance();
 
+            builder.RegisterInstance<IMessanger>(new projekt_1.Messanger.Messanger())
+                .SingleInstance();
+
             builder.RegisterInstance<ISettingsRepository>(new InMemorySettings())
                 .SingleInstance();
 
             builder.RegisterType<UsersContext>()
                 .AsSelf()
                 .SingleInstance();
+
         }
-
-
     }
 }

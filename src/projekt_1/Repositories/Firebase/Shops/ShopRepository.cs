@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using projekt_1.Messanger;
+using projekt_1.Messanger.Messages;
 using projekt_1.Models;
 using projekt_1.Repositories.Firebase.Contexts;
 using projekt_1.Repositories.Settings;
@@ -18,13 +13,18 @@ namespace projekt_1.Repositories.Firebase.Shops
 {
     public class ShopRepository : IShopRepository, IFirebaseRepository
     {
+        private readonly IMessanger _messanger;
         private readonly UsersContext _usersContext;
         private readonly ISettingsRepository _settingsRepository;
         private readonly User _user;
         private readonly IGeofenceService _geofenceService;
 
-        public ShopRepository(UsersContext usersContext, ISettingsRepository settingsRepository, IGeofenceService geofenceService)
+        public ShopRepository(IMessanger messenger,
+            UsersContext usersContext, 
+            ISettingsRepository settingsRepository,
+            IGeofenceService geofenceService)
         {
+            _messanger = messenger;
             _usersContext = usersContext;
             _settingsRepository = settingsRepository;
             _user = _settingsRepository.User;
@@ -54,6 +54,7 @@ namespace projekt_1.Repositories.Firebase.Shops
             _user.Shops.Add(shop);
             await _usersContext.InsertOrUpdateAsync(_user);
 
+            _messanger.Publish(new ShopCreatedMessage(shop, this));
             _geofenceService.SetGeofenceTrigger(shop.Latitude, shop.Longitude, shop.Radius,
                 $"Entered into {shop.Name}", $"You leaved {shop.Name} Why ;-(!", shop.Name);
         }

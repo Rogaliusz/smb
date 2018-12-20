@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Timers;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
@@ -10,11 +8,16 @@ using Android.Views;
 using projekt_1.Models;
 using projekt_1.Repositories.Settings;
 using projekt_1.Services.Geolocation;
+using projekt_1.Messanger;
+using projekt_1.Messanger.Token;
+using projekt_1.Messanger.Messages;
+using System;
 
 namespace projekt_1.Fragments
 {
     public class ShopMapFragment : FragmentBase, IOnMapReadyCallback, IFragment
     {
+        private readonly IMessageToken _token;
         private readonly IGeolocationService _geolocationService;
         private readonly ISettingsRepository _settingsRepository;
 
@@ -22,10 +25,22 @@ namespace projekt_1.Fragments
         private GoogleMap _googleMap;
         private System.Timers.Timer _timer;
 
-        public ShopMapFragment(IGeolocationService geolocationService, ISettingsRepository settingsRepository)
+        public ShopMapFragment(IMessanger messanger,
+            IGeolocationService geolocationService, 
+            ISettingsRepository settingsRepository)
         {
+            _token = messanger.Subscribe<ShopCreatedMessage>(HandleShopCreated);
+
             _geolocationService = geolocationService;
             _settingsRepository = settingsRepository;
+        }
+
+        private void HandleShopCreated(ShopCreatedMessage message)
+        {
+            var shop = message.Shop;
+
+            _googleMap.AddMarker(CreateMarkerOptions(shop));
+            _googleMap.AddCircle(CreateCircleOptions(shop));
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

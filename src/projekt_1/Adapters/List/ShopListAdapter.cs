@@ -32,7 +32,6 @@ namespace projekt_1.Adapters
             RefreshData();
         }
 
-
         public override long GetItemId(int position)
             => _shops[position].Id.GetHashCode();
 
