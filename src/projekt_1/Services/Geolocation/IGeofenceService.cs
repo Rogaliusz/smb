@@ -1,6 +1,4 @@
 ﻿using System;
-using Plugin.Geofence;
-using Plugin.Geofence.Abstractions;
 
 namespace projekt_1.Services.Geolocation
 {

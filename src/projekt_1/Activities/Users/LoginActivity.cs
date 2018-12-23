@@ -31,7 +31,6 @@ namespace projekt_1.Activities.Users
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.login_activity);
 
-            Plugin.Geofence.CrossGeofence.Initialize<CrossGeofenceListener>();
             Xamfire.Android.Xamfire.Initialization(this);
             IoC.MainContainer.RegisterIoC(this);
 

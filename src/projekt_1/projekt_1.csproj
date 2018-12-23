@@ -113,7 +113,6 @@
     <Compile Include="Services\Geolocation\IGeofenceService.cs" />
     <Compile Include="Framework\GeofenceService.cs" />
     <Compile Include="Services\Geolocation\GeofenceService.cs" />
-    <Compile Include="Services\Geolocation\CrossGeofenceListener.cs" />
     <Compile Include="Messanger\IMessanger.cs" />
     <Compile Include="Messanger\Messages\ShopCreatedMessage.cs" />
     <Compile Include="Messanger\Messages\MessageBase.cs" />
@@ -122,6 +121,8 @@
     <Compile Include="Messanger\Subscriptions\SubscriptionBase.cs" />
     <Compile Include="Messanger\Token\MessageToken.cs" />
     <Compile Include="Messanger\Token\IMessageToken.cs" />
+    <Compile Include="Constans.cs" />
+    <Compile Include="BroadcastRecievers\GeofenceBroadcastReciever.cs" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json">
@@ -192,8 +193,8 @@
     <PackageReference Include="Xamarin.GooglePlayServices.Maps">
       <Version>60.1142.1</Version>
     </PackageReference>
-    <PackageReference Include="Plugin.Geofence">
-      <Version>1.0.1</Version>
+    <PackageReference Include="Xamarin.GooglePlayServices.Location">
+      <Version>60.1142.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +246,7 @@
     <Folder Include="Messanger\Messages\" />
     <Folder Include="Messanger\Subscriptions\" />
     <Folder Include="Messanger\Token\" />
+    <Folder Include="BroadcastRecievers\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\login_activity.axml">

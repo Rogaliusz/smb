@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Android.Content;
-using Android.Locations;
-using Android.OS;
-using Android.Runtime;
-using Plugin.Geofence;
 using Plugin.Geolocator;
-using projekt_1.Framework;
 
 namespace projekt_1.Services.Geolocation
 {

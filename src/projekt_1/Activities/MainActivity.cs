@@ -1,18 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Android.App;
+﻿using Android.App;
+using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
-using Android.Support.V7.App;
-using Android.Support.V7.Widget;
-using Android.Views;
-using Firebase;
 using Plugin.CurrentActivity;
-using projekt_1.Adapters;
 using projekt_1.Adapters.Pager;
+using projekt_1.BroadcastRecievers;
 using projekt_1.Services.Geolocation;
 using projekt_1.Services.SqlLite;
 
@@ -26,6 +19,7 @@ namespace projekt_1.Activities
 
         private TabLayout _tabLayout;
         private ViewPager _viewPager;
+        private BroadcastReceiver _broadcastReciever;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -43,6 +37,8 @@ namespace projekt_1.Activities
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
             _geolocationService.StartListeningGeolocationAsync();
+
+            CreateBroadcastReciever();
         }
 
         private void InitalizeTabLayout()
@@ -75,6 +71,19 @@ namespace projekt_1.Activities
         private void RegisterComponents()
         {
             _sqlLiteService.CreateDb();
+            CreateBroadcastReciever();
+        }
+
+        private void CreateBroadcastReciever()
+        {
+            if(_broadcastReciever != null)
+            {
+                return;
+            }
+
+            _broadcastReciever = new GeofenceBroadcastReciever();
+            var intentFilter = new IntentFilter(Constans.GeofenceIntent);
+            RegisterReceiver(_broadcastReciever, intentFilter);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
